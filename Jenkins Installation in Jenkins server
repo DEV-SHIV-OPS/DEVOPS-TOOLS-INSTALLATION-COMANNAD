@@ -1,8 +1,44 @@
 The DevOps team at xFusionCorp Industries is initiating the setup of CI/CD pipelines and has decided to utilize Jenkins as their server. Execute the task according to the provided requirements:
 
 
-
 1. Install jenkins on jenkins server using yum utility only, and start its service. You might face timeout issue while starting the Jenkins service, please refer this link for help.
 
-
 2. Jenkin's admin user name should be theadmin, password should be Adm!n321, full name should be Yousuf and email should be yousuf@jenkins.stratos.xfusioncorp.com.
+
+
+// Here are the all steps which you need  to perform for installing Jenkins in Jenkins Server
+To install Jenkins on a server using yum and start its service, first update the system, then add the Jenkins repository, install Jenkins with yum install jenkins, and finally, start and enable the Jenkins service using systemctl. 
+
+Here's a step-by-step guide:
+
+1. Update the System:
+Ensure your system packages are up to date: sudo yum update -y. 
+
+2. Add the Jenkins Repository:
+Download the repository file: sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+Import the GPG key: sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key 
+
+3. Install Jenkins:
+Install Jenkins using yum: sudo yum install jenkins -y 
+
+4. Start and Enable the Jenkins Service:
+  4.1 Start the Jenkins service: sudo systemctl start jenkins
+
+  4.2 Enable the Jenkins service to start at boot: sudo systemctl enable jenkins
+
+  4.3 Check the status of the Jenkins service: sudo systemctl status jenkins 
+
+
+Additional Notes:
+1. Java:
+Jenkins requires Java, so ensure it is installed on your system. You can install it using yum: sudo yum install java-11-openjdk-devel. 
+
+2. Firewall:
+If you have a firewall installed, you might need to add an exception for Jenkins (port 8080 is common). 
+
+3. Jenkins URL:
+You can access Jenkins in your web browser by going to http://<your_server_ip>:8080. 
+
+4. Restarting Jenkins:
+You can restart Jenkins using the command sudo systemctl restart jenkins. 
